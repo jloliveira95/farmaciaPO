@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Categoria } from "../../models/Categoria";
 import { CategoriaService } from "../../services/CategoriaService";
-import { useNavigate } from "react-router-dom";
 
 const FormCategoria = () => {
   const navigate = useNavigate();
@@ -18,12 +18,12 @@ const FormCategoria = () => {
     } else {
       await CategoriaService.atualizar(categoria);
     }
-    navigate("/categorias");
+    navigate("/categorias"); // Redireciona de volta para a lista
   };
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Nova Categoria</h2>
+      <h2 className="text-2xl font-bold mb-4">{categoria.id ? "Editar Categoria" : "Nova Categoria"}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -41,8 +41,8 @@ const FormCategoria = () => {
           onChange={handleChange}
           className="border p-2 w-full"
         />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-          Cadastrar
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+          {categoria.id ? "Atualizar" : "Cadastrar"}
         </button>
       </form>
     </div>
