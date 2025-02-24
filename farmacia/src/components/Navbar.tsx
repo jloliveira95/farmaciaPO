@@ -2,14 +2,15 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-500 text-white flex flex-col justify-center items-center h-screen">
-      <h1 className="text-4xl font-bold mb-4">Farmácia</h1>
-      <div>
-        <Link to="/" className="text-lg bg-white text-blue-500 px-4 py-2 rounded-lg shadow-md">
-          Home
-        </Link>
+    <div className="w-full flex justify-center py-4 bg-green-800 text-white shadow-lg">
+      <div className="container flex justify-between items-center px-6">
+        <Link to="/" className="text-2xl font-bold hover:text-gray-300 transition">Farmácia</Link>
+
+        <div className="flex gap-6">
+          <Link to="/categorias" className="hover:underline">Categorias</Link>
+        </div>
       </div>
-    </nav>
+    </div>
   );
 };
 
